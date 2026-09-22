@@ -1,26 +1,24 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
-    "target": "ES2015",
-    "useDefineForClassFields": true,
+    "target": "ES2023",
     "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
+      "ES2023"
     ],
-    "allowJs": false,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "types": [
+      "node"
+    ],
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
-    "isolatedModules": false,
-    "jsx": "react-jsx"
+    "rewriteRelativeImportExtensions": true,
+    "rootDir": "src",
+    "outDir": "dist",
+    "noEmitOnError": true
   },
   "include": [
-    "src"
+    "src/**/*.ts"
   ]
 }

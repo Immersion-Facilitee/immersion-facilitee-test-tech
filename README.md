@@ -23,31 +23,43 @@
 
 ## Fonctionnement du starter
 
-Le starter utilise les technologies suivantes:
-
-- Tests automatisés au travers de **_jest_**
-- Spécification au travers de **_markdown_**
-- Projet github récupérable [Lien Github](https://github.com/bbohec/immersion-facilit-e-entretien)
-- Si pas d'IDE > [Code Sandbox](https://codesandbox.io/s/github/bbohec/immersion-facilit-e-entretien?file=/README.md)
-
+Le starter utilise **TypeScript 7**, **Vitest** pour les tests et **Node.js 24**.
+Les versions de TypeScript et Vitest sont fixées dans `package.json` et installées
+localement : aucune installation globale de ces outils n'est nécessaire.
 
 ### Installer le projet
 
-`npm install`
+Utiliser Node.js 24 (`nvm use` si nvm est installé), puis installer les dépendances avec npm :
 
-### TS : Lancer `exercice.ts`
+```sh
+npm install
+```
 
-`npm run ts`
+Le fichier `package-lock.json` est versionné. Pour reproduire exactement les
+versions verrouillées, utiliser `npm ci`. Après une modification des dépendances,
+versionner également la mise à jour du lockfile.
 
-### JS : Lancer `exercice.js`
+### Commandes
 
-`npm run js`
+| Action | Commande |
+| --- | --- |
+| Lancer `exercice.ts` après compilation | `npm run ts` |
+| Lancer `exercice.js` | `npm run js` |
+| Compiler les sources TS dans `dist/` | `npm run build` |
+| Vérifier les types, tests compris | `npm run typecheck` |
+| Lancer les tests une fois puis quitter | `npm test` |
+| Relancer les tests à chaque modification | `npm run test:watch` |
+| Vérifier les types puis lancer les tests | `npm run check` |
 
-### Lancer tous les tests (fichiers se terminant en .spec.ts)
+**Le starter contient volontairement une assertion qui échoue et une qui réussit.**
+Au départ, `test` et `check` se terminent donc avec un code d'échec : c'est attendu
+pour cet exercice. Les assertions sont à travailler par le candidat.
 
-`npm run test`
-
-
+Les tests utilisent des imports explicites depuis `vitest`. Le projet utilise les
+modules ESM ; dans les sources TypeScript, les imports relatifs peuvent utiliser
+l'extension `.ts` (par exemple `import { cities } from './cities.ts'`). TypeScript
+les convertit en `.js` lors de la compilation. Les tests ne sont pas compilés dans
+`dist/`.
 
 ## Expression du Besoin
 
@@ -70,7 +82,7 @@ Tout les scénarios utilisent la liste de ville standard suivante:
   | Pontoise  | 95          |
 ```
 
-> Il y a un fichier `cities.json` avec les données en JSON
+> Il y a un fichier `cities.ts` avec les données
 
 #### Scénario - Récupération des villes du 95:
 
