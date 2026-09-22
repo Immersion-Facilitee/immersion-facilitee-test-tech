@@ -2,21 +2,22 @@
   "name": "exercice-immersion-facile",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
+  "engines": {
+    "node": "^24.0.0 || >=26.0.0"
+  },
   "scripts": {
-    "test": "jest --watchAll",
-    "build": "babel src --out-dir dist --extensions \".ts,.tsx\" --ignore='**/*.spec.ts'",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
-    "ts": "npm run build && node dist/exercice.js",
+    "check": "npm run typecheck && npm test",
+    "ts": "tsc -p tsconfig.build.json && node dist/exercice.js",
     "js": "node src/exercice.js"
   },
   "devDependencies": {
-    "@babel/cli": "^7.19.3",
-    "@babel/core": "^7.20.2",
-    "@babel/preset-env": "^7.20.2",
-    "@babel/preset-typescript": "^7.18.6",
-    "@types/jest": "^29.2.0",
-    "babel-jest": "^29.3.0",
-    "jest": "^29.2.2",
-    "typescript": "^4.8.4"
+    "@types/node": "24.13.6",
+    "typescript": "7.0.2",
+    "vitest": "5.0.1"
   }
 }
